@@ -7,6 +7,8 @@
       content : "1) Server fqdn    =  {{ ansible_fqdn }} \n
                  2) OS Version  =  {{ ansible_distribution }} \n
                  3) free memory = {{ ansible_memfree_mb }} \n
-                 4) no  of cpu's  = {{ ansible_processor_count }} \n"
+                 4) no  of cpu's  = {{ ansible_processor_count }} \n
+                 5) ip address = {{ ansible_all_ipv4_addresses }} \n
+                 6) date and time = {{ ansible_date_time }}"
       dest : /opt/server.txt
 
