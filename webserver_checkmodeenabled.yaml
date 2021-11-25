@@ -1,0 +1,28 @@
+---
+- name : Deployment of Web Server in Docker1 and Docker2 Managed Hosts
+  hosts : Docker1 Docker2
+  gather_facts : false
+  check_mode : yes
+  vars :
+    var1 : httpd
+  tasks : 
+  - name : installing httpd service
+    yum:
+      name: "{{ var1 }}"
+      state: latest
+  - name : enable and start httpd service
+    service:
+      name: "{{ var1 }}"
+      state: started
+      enabled : yes
+  - name : Creation of index.html file under /var/www/html with content
+    copy : 
+      content : " Welcome to OnMobile Ansible Automation Training !\n"
+      dest : /var/www/html/index.html
+  - name : Adding http service under firewalld and enabling it immediately
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+      immediate : yes
+ 
