@@ -1,0 +1,12 @@
+- name : create an directory /onmo-directory and welcome file with content
+  hosts : Docker2
+  tasks : 
+  - name : create an directory /onmo-directory
+    file :
+      path : /onmo-directory
+      state : directory
+  - name : create a file welcome with content "welcome to onmobile ansible automation"
+    copy :
+      content: "welcome to onmobile ansible automation training !!!!\n"
+      dest: /onmo-directory/welcome
+ 
