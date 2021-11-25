@@ -1,0 +1,13 @@
+---
+- name : image creation in docker hosts
+  hosts : all
+  remote_user : docker
+  become : true
+  tasks : 
+  - name : Images Creation
+    shell : cd /home/docker/ansible-docker; docker build -t ansible-docker:v1 .
+    register : output1
+
+  - debug :
+      var : output1
+
